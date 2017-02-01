@@ -40,7 +40,8 @@ namespace labo_01_convertisseur
             {
                 if (chkSerialPortSync.Checked)
                 {
-                    ps.EcrireLigne(nudDecimal.Value.ToString());
+                    ps.EcrireOctet((byte)nudDecimal.Value);
+                    //ps.EcrireLigne(nudDecimal.Value.ToString());
 
                 }
             }
