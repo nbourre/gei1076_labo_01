@@ -8,6 +8,7 @@ namespace labo_01_convertisseur
     public partial class Form1 : Form
     {
         PortSerie ps;
+        
 
         private Label[] septSegments = new Label[7];
 
@@ -18,6 +19,7 @@ namespace labo_01_convertisseur
             InitializeComponent();
 
             ps = new PortSerie();
+            
         }
 
         private void nudDecimal_ValueChanged(object sender, EventArgs e)
@@ -100,6 +102,9 @@ namespace labo_01_convertisseur
             cboSerialPortList.Items.Clear();
             String[] Ports = System.IO.Ports.SerialPort.GetPortNames();
             cboSerialPortList.Items.AddRange(Ports);
+
+            btnSerialPortOpen.Enabled = cboSerialPortList.SelectedItem != null;
+            setStateLabelColor();
         }
 
         private void AffecteValeurBinaire(int valeur)
@@ -144,6 +149,7 @@ namespace labo_01_convertisseur
                 {1,0,0,1,1,1,1}, // E
                 {1,0,0,0,1,1,1}  // F
             };
+        
 
         /// <summary>
         /// Affiche la valeur sur le pseudo 7 segments représenté par 7 Libellés
@@ -175,22 +181,49 @@ namespace labo_01_convertisseur
             if (cboSerialPortList.SelectedItem != null)
             {
                 ps.Ouvrir(cboSerialPortList.SelectedItem.ToString());
+                setStateLabelColor();
             }
         }
 
         private void btnSerialPortClose_Click(object sender, EventArgs e)
         {
             ps.Fermer();
+            setStateLabelColor();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cboSerialPortList.SelectedItem == null)
+            {
+                btnSerialPortOpen.Enabled = false;              
+            } else
+            {
+                btnSerialPortOpen.Enabled = true;
+            }
+
+            ps.Fermer();
+            setStateLabelColor();
+
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
             if (ps.Ouvert)
             {
                 ps.Fermer();
+                setStateLabelColor();
             }
+        }
 
-            
+        private void setStateLabelColor()
+        {
+            if (ps.Ouvert)
+            {
+                lblState.BackColor = Color.Green;
+            } else
+            {
+                lblState.BackColor = Color.LightGray;
+            }
         }
     }
 }
