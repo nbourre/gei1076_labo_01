@@ -7,6 +7,8 @@ namespace labo_01_convertisseur
 
     public partial class Form1 : Form
     {
+        PortSerie ps;
+
         private Label[] septSegments = new Label[7];
 
        
@@ -14,6 +16,8 @@ namespace labo_01_convertisseur
         public Form1()
         {
             InitializeComponent();
+
+            ps = new PortSerie();
         }
 
         private void nudDecimal_ValueChanged(object sender, EventArgs e)
@@ -27,7 +31,16 @@ namespace labo_01_convertisseur
                 nudHex.Value = nudDecimal.Value;
                 AffecteValeurBinaire((int)nudDecimal.Value);
                 Affiche7Segments((int)nudDecimal.Value);
-                
+   
+            }
+
+            if (ps.Ouvert)
+            {
+                if (chkSerialPortSync.Checked)
+                {
+                    ps.EcrireLigne(nudDecimal.Value.ToString());
+
+                }
             }
         }
 
@@ -82,6 +95,11 @@ namespace labo_01_convertisseur
             radHex.Checked = nudHex.Enabled = false;
 
             nudDecimal.Value = 0;
+
+
+            cboSerialPortList.Items.Clear();
+            String[] Ports = System.IO.Ports.SerialPort.GetPortNames();
+            cboSerialPortList.Items.AddRange(Ports);
         }
 
         private void AffecteValeurBinaire(int valeur)
@@ -150,6 +168,29 @@ namespace labo_01_convertisseur
         private void chkCounter_CheckedChanged(object sender, EventArgs e)
         {
             timer1.Enabled = chkCounter.Checked;
+        }
+
+        private void btnSerialPortOpen_Click(object sender, EventArgs e)
+        {
+            if (cboSerialPortList.SelectedItem != null)
+            {
+                ps.Ouvrir(cboSerialPortList.SelectedItem.ToString());
+            }
+        }
+
+        private void btnSerialPortClose_Click(object sender, EventArgs e)
+        {
+            ps.Fermer();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ps.Ouvert)
+            {
+                ps.Fermer();
+            }
+
+            
         }
     }
 }

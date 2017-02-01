@@ -48,12 +48,20 @@
             this.lblSeg_F = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.pnl_serialPort = new System.Windows.Forms.Panel();
+            this.btnSerialPortClose = new System.Windows.Forms.Button();
+            this.btnSerialPortOpen = new System.Windows.Forms.Button();
+            this.cboSerialPortList = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.chkSerialPortSync = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudDecimal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBin03)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBin02)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBin00)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBin01)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHex)).BeginInit();
+            this.pnl_serialPort.SuspendLayout();
             this.SuspendLayout();
             // 
             // nudDecimal
@@ -144,7 +152,7 @@
             // chkCounter
             // 
             this.chkCounter.AutoSize = true;
-            this.chkCounter.Location = new System.Drawing.Point(166, 366);
+            this.chkCounter.Location = new System.Drawing.Point(166, 76);
             this.chkCounter.Name = "chkCounter";
             this.chkCounter.Size = new System.Drawing.Size(71, 17);
             this.chkCounter.TabIndex = 6;
@@ -249,11 +257,84 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // pnl_serialPort
+            // 
+            this.pnl_serialPort.Controls.Add(this.chkSerialPortSync);
+            this.pnl_serialPort.Controls.Add(this.label2);
+            this.pnl_serialPort.Controls.Add(this.label1);
+            this.pnl_serialPort.Controls.Add(this.cboSerialPortList);
+            this.pnl_serialPort.Controls.Add(this.btnSerialPortClose);
+            this.pnl_serialPort.Controls.Add(this.btnSerialPortOpen);
+            this.pnl_serialPort.Location = new System.Drawing.Point(12, 322);
+            this.pnl_serialPort.Name = "pnl_serialPort";
+            this.pnl_serialPort.Size = new System.Drawing.Size(404, 92);
+            this.pnl_serialPort.TabIndex = 17;
+            // 
+            // btnSerialPortClose
+            // 
+            this.btnSerialPortClose.Location = new System.Drawing.Point(318, 29);
+            this.btnSerialPortClose.Name = "btnSerialPortClose";
+            this.btnSerialPortClose.Size = new System.Drawing.Size(75, 23);
+            this.btnSerialPortClose.TabIndex = 1;
+            this.btnSerialPortClose.Text = "Fermer";
+            this.btnSerialPortClose.UseVisualStyleBackColor = true;
+            this.btnSerialPortClose.Click += new System.EventHandler(this.btnSerialPortClose_Click);
+            // 
+            // btnSerialPortOpen
+            // 
+            this.btnSerialPortOpen.Location = new System.Drawing.Point(237, 29);
+            this.btnSerialPortOpen.Name = "btnSerialPortOpen";
+            this.btnSerialPortOpen.Size = new System.Drawing.Size(75, 23);
+            this.btnSerialPortOpen.TabIndex = 0;
+            this.btnSerialPortOpen.Text = "Ouvrir";
+            this.btnSerialPortOpen.UseVisualStyleBackColor = true;
+            this.btnSerialPortOpen.Click += new System.EventHandler(this.btnSerialPortOpen_Click);
+            // 
+            // cboSerialPortList
+            // 
+            this.cboSerialPortList.FormattingEnabled = true;
+            this.cboSerialPortList.Location = new System.Drawing.Point(104, 30);
+            this.cboSerialPortList.Name = "cboSerialPortList";
+            this.cboSerialPortList.Size = new System.Drawing.Size(121, 21);
+            this.cboSerialPortList.TabIndex = 2;
+            this.cboSerialPortList.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(130, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Configuration du port série";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(20, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(78, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Ports reconnus";
+            // 
+            // chkSerialPortSync
+            // 
+            this.chkSerialPortSync.AutoSize = true;
+            this.chkSerialPortSync.Checked = true;
+            this.chkSerialPortSync.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkSerialPortSync.Location = new System.Drawing.Point(23, 57);
+            this.chkSerialPortSync.Name = "chkSerialPortSync";
+            this.chkSerialPortSync.Size = new System.Drawing.Size(87, 17);
+            this.chkSerialPortSync.TabIndex = 5;
+            this.chkSerialPortSync.Text = "Synchroniser";
+            this.chkSerialPortSync.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(441, 439);
+            this.ClientSize = new System.Drawing.Size(427, 426);
+            this.Controls.Add(this.pnl_serialPort);
             this.Controls.Add(this.lblSeg_E);
             this.Controls.Add(this.lblSeg_F);
             this.Controls.Add(this.lblSeg_C);
@@ -271,6 +352,7 @@
             this.Controls.Add(this.nudBin02);
             this.Controls.Add(this.nudBin03);
             this.Controls.Add(this.nudDecimal);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
             this.Text = "Convertisseur visuel";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -280,6 +362,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudBin00)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBin01)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHex)).EndInit();
+            this.pnl_serialPort.ResumeLayout(false);
+            this.pnl_serialPort.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -306,6 +390,13 @@
         private System.Windows.Forms.Label lblSeg_F;
         private System.Windows.Forms.Timer timer1;
         private System.IO.Ports.SerialPort serialPort1;
+        private System.Windows.Forms.Panel pnl_serialPort;
+        private System.Windows.Forms.Button btnSerialPortOpen;
+        private System.Windows.Forms.Button btnSerialPortClose;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cboSerialPortList;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox chkSerialPortSync;
     }
 }
 

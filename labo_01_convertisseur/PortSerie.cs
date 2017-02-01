@@ -22,7 +22,7 @@ namespace labo_01_convertisseur
 
         public bool Ouvrir(string nomPort = "COM1", int baudRate = 9600)
         {
-            if (ouvert == false)
+            if (!ouvert)
             {
                 try
                 {
