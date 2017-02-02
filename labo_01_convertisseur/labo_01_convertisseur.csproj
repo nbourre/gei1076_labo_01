@@ -107,6 +107,12 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SerialPortConfigurator\SerialPortConfigurator.csproj">
+      <Project>{6293B2B9-2124-458E-8A24-63ADB3833BC2}</Project>
+      <Name>SerialPortConfigurator</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

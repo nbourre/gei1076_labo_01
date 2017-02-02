@@ -48,6 +48,7 @@
             this.lblSeg_F = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnl_serialPort = new System.Windows.Forms.Panel();
+            this.lblState = new System.Windows.Forms.Label();
             this.lblEtat = new System.Windows.Forms.Label();
             this.chkSerialPortSync = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -55,7 +56,6 @@
             this.cboSerialPortList = new System.Windows.Forms.ComboBox();
             this.btnSerialPortClose = new System.Windows.Forms.Button();
             this.btnSerialPortOpen = new System.Windows.Forms.Button();
-            this.lblState = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudDecimal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBin03)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBin02)).BeginInit();
@@ -274,6 +274,16 @@
             this.pnl_serialPort.Size = new System.Drawing.Size(404, 92);
             this.pnl_serialPort.TabIndex = 17;
             // 
+            // lblState
+            // 
+            this.lblState.AutoSize = true;
+            this.lblState.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblState.Location = new System.Drawing.Point(363, 58);
+            this.lblState.MinimumSize = new System.Drawing.Size(30, 2);
+            this.lblState.Name = "lblState";
+            this.lblState.Size = new System.Drawing.Size(30, 15);
+            this.lblState.TabIndex = 7;
+            // 
             // lblEtat
             // 
             this.lblEtat.AutoSize = true;
@@ -341,16 +351,6 @@
             this.btnSerialPortOpen.Text = "Ouvrir";
             this.btnSerialPortOpen.UseVisualStyleBackColor = true;
             this.btnSerialPortOpen.Click += new System.EventHandler(this.btnSerialPortOpen_Click);
-            // 
-            // lblState
-            // 
-            this.lblState.AutoSize = true;
-            this.lblState.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblState.Location = new System.Drawing.Point(363, 58);
-            this.lblState.MinimumSize = new System.Drawing.Size(30, 0);
-            this.lblState.Name = "lblState";
-            this.lblState.Size = new System.Drawing.Size(30, 15);
-            this.lblState.TabIndex = 7;
             // 
             // Form1
             // 
